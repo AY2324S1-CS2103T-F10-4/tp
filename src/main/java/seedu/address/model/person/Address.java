@@ -49,11 +49,11 @@ public class Address {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Address)) {
+        if (!(other instanceof Remark)) {
             return false;
         }
 
-        Address otherAddress = (Address) other;
+        Remark otherAddress = (Remark) other;
         return value.equals(otherAddress.value);
     }
 
