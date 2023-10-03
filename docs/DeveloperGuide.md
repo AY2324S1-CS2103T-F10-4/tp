@@ -320,8 +320,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Calendar Applications**: Digital tools for organizing and managing schedules, events, and tasks.
+* **Shortcut Commands**:  Quick combinations of keystrokes that trigger specific actions in a software application.
+* **Participation Grade**: The grade used to assess a student's active involvement and engagement during academic activities.
+* **Academic Performance**: It represents a student's achievements and results in the study, including grades, exam scores, projects and so on.
 
 --------------------------------------------------------------------------------------------------------------------
 
