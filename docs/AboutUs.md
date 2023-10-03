@@ -29,14 +29,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Lang Heran
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/heran9.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/heran9)] [[portfolio](team/heran9.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: NA
 
 ### Jean Doe
 
