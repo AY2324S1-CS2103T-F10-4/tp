@@ -9,7 +9,7 @@ to be added soon
 
 Given below are my contributions to the project.
 
-* **New Feature**: 
+* **New Feature**:
   * to be added soon
 
 * **Code contributed**:

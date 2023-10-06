@@ -29,7 +29,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Lam Jin Heng Braydon
 
-<img src="images/braydon.png" width="200px">
+<img src="images/lambraydon.png" width="200px">
 
 [[github](https://github.com/lambraydon)] [[portfolio](team/johndoe.md)]
 
@@ -48,9 +48,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Winston Leonard Prayonggo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/Winston.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/WinstonLeonard)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
