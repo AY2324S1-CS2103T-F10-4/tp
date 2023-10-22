@@ -144,6 +144,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void markPersonPaid(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void getPersonPaid(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }

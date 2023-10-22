@@ -50,7 +50,6 @@ public class EditPersonDescriptorTest {
         // different address -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
-
     }
 
     @Test
@@ -60,7 +59,10 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", address="
-                + editPersonDescriptor.getAddress().orElse(null) + "}";
+                + editPersonDescriptor.getDay().orElse(null) + ", day="
+                + editPersonDescriptor.getAddress().orElse(null) + ", tags="
+                + editPersonDescriptor.getTags().orElse(null) + ", paid="
+                + editPersonDescriptor.getPayRate().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

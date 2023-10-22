@@ -35,6 +35,20 @@ public class PersonCard extends UiPart<Region> {
     private Label address;
     @FXML
     private Label email;
+    @FXML
+    private Label subject;
+    @FXML
+    private Label day;
+    @FXML
+    private Label begin;
+    @FXML
+    private Label end;
+
+    @FXML
+    private Label ispaid;
+
+    @FXML
+    private Label payRate;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -46,6 +60,13 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
+        day.setText(person.getDay().value.toString());
         email.setText(person.getEmail().value);
+        subject.setText(person.getSubject().value);
+        day.setText(person.getDay().value);
+        begin.setText(person.getBegin().value);
+        end.setText(person.getEnd().value);
+        payRate.setText("rate: " + person.getPayRate().toString() + "/h");
+        //ispaid.setText("1");
     }
 }

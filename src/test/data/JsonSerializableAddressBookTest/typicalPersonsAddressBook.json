@@ -5,42 +5,84 @@
     "phone" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+    "subject" : "Maths",
+    "day": "Mon",
+    "begin": "0800",
+    "end": "1000",
+    "tags" : [ "friends" ],
+    "paid": "false",
+    "payrate": "20"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
-    "tags" : [ "owesMoney", "friends" ]
+    "subject" : "Chemistry",
+    "day": "Tues",
+    "begin": "0900",
+    "end": "1100",
+    "tags" : [ "owesMoney", "friends" ],
+    "paid": "false",
+    "payrate": "15"
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
-    "tags" : [ ]
+    "subject" : "Biology",
+    "day": "Thurs",
+    "begin": "1000",
+    "end": "1200",
+    "tags" : [ ],
+    "paid": "false",
+    "payrate": "25"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
-    "tags" : [ "friends" ]
+    "subject" : "Physics",
+    "day": "Thurs",
+    "begin": "1100",
+    "end": "1300",
+    "tags" : [ "friends" ],
+    "paid": "false",
+    "payrate": "35"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
     "address" : "michegan ave",
-    "tags" : [ ]
+    "subject" : "Maths",
+    "day": "Fri",
+    "begin": "1200",
+    "end": "1400",
+    "tags" : [ ],
+    "paid": "false",
+    "payrate": "50"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
-    "tags" : [ ]
+    "subject" : "English",
+    "day": "Sat",
+    "begin": "1300",
+    "end": "1500",
+    "tags" : [ ],
+    "paid": "false",
+    "payrate": "40"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
-    "tags" : [ ]
+    "subject" : "Chinese",
+    "day": "Sun",
+    "begin": "1400",
+    "end": "1600",
+    "tags" : [ ],
+    "paid": "false",
+    "payrate": "30"
   } ]
 }

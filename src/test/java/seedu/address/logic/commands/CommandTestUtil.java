@@ -3,9 +3,14 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BEGIN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PAYRATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -19,7 +24,6 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
-
 /**
  * Contains helper methods for testing commands.
  */
@@ -33,6 +37,16 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_SUBJECT_AMY = "Maths";
+    public static final String VALID_SUBJECT_BOB = "Physics";
+    public static final String VALID_DAY_AMY = "Mon";
+    public static final String VALID_DAY_BOB = "Tues";
+    public static final String VALID_BEGIN_AMY = "1200";
+    public static final String VALID_BEGIN_BOB = "1300";
+    public static final String VALID_END_AMY = "1400";
+    public static final String VALID_END_BOB = "1500";
+    public static final String VALID_PAYRATE_AMY = "75";
+    public static final String VALID_PAYRATE_BOB = "25";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -42,10 +56,28 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
+  
+    public static final String SUBJECT_DESC_AMY = " " + PREFIX_SUBJECT + VALID_SUBJECT_AMY;
+    public static final String SUBJECT_DESC_BOB = " " + PREFIX_SUBJECT + VALID_SUBJECT_BOB;
+    public static final String DAY_DESC_AMY = " " + PREFIX_DAY + VALID_DAY_AMY;
+    public static final String DAY_DESC_BOB = " " + PREFIX_DAY + VALID_DAY_BOB;
+    public static final String BEGIN_DESC_AMY = " " + PREFIX_BEGIN + VALID_BEGIN_AMY;
+    public static final String BEGIN_DESC_BOB = " " + PREFIX_BEGIN + VALID_BEGIN_BOB;
+    public static final String END_DESC_AMY = " " + PREFIX_END + VALID_END_AMY;
+    public static final String END_DESC_BOB = " " + PREFIX_END + VALID_END_BOB;
+    public static final String PAYRATE_DESC_AMY = " " + PREFIX_PAYRATE + VALID_PAYRATE_AMY;
+    public static final String PAYRATE_DESC_BOB = " " + PREFIX_PAYRATE + VALID_PAYRATE_BOB;
+
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
+    public static final String INVALID_SUBJECT_DESC = " " + PREFIX_SUBJECT; // empty string not allowed for subjects
+    public static final String INVALID_DAY_DESC = " " + PREFIX_DAY + "Monday"; // full day name not allowed
+    public static final String INVALID_BEGIN_DESC = " " + PREFIX_BEGIN + "9999"; //not a valid time
+    public static final String INVALID_END_DESC = " " + PREFIX_END + "8888"; // not a valid time
+    public static final String INVALID_PAYRATE_DESC = " " + PREFIX_PAYRATE + "hundred"; // String not allowed in tags
+
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
@@ -54,9 +86,13 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).build();
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+                .withSubject(VALID_SUBJECT_AMY).withDay(VALID_DAY_AMY)
+                .withBegin(VALID_BEGIN_AMY).withEnd(VALID_END_AMY)
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).build();
+                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+                .withSubject(VALID_SUBJECT_BOB).withDay(VALID_DAY_BOB)
+                .withBegin(VALID_BEGIN_BOB).withEnd(VALID_END_BOB)
     }
 
     /**
@@ -65,7 +101,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -80,7 +116,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -101,6 +137,7 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.

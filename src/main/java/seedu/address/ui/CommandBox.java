@@ -38,7 +38,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         String commandText = commandTextField.getText();
         if (commandText.equals("")) {
-            return;
+            setStyleToIndicateCommandFailure();
         }
 
         try {

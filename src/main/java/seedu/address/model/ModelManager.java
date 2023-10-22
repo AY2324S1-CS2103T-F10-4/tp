@@ -99,6 +99,16 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void markPersonPaid(Person target) {
+        target.setPaid();
+    }
+
+    @Override
+    public void getPersonPaid(Person target) {
+        target.getPaid();
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -110,6 +120,7 @@ public class ModelManager implements Model {
 
         addressBook.setPerson(target, editedPerson);
     }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

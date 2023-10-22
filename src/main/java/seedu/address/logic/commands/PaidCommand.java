@@ -12,22 +12,19 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Mark the tutee as paid.
  */
-public class DeleteCommand extends Command {
-
-    public static final String COMMAND_WORD = "delete";
+public class PaidCommand extends Command {
+    public static final String COMMAND_WORD = "paid";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_MARK_PERSON_PAID_SUCCESS = "MARK PERSON PAID SUCCESS, Paid: %1$s";
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public PaidCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -40,9 +37,10 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_TUTEE_DISPLAYED_INDEX);
         }
 
-        Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+        Person personToMarkPaid = lastShownList.get(targetIndex.getZeroBased());
+        model.markPersonPaid(personToMarkPaid);
+        return new CommandResult(String.format(MESSAGE_MARK_PERSON_PAID_SUCCESS, personToMarkPaid.getPaid()));
+
     }
 
     @Override
@@ -52,12 +50,12 @@ public class DeleteCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof PaidCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        PaidCommand otherPaidCommands = (PaidCommand) other;
+        return targetIndex.equals(otherPaidCommands.targetIndex);
     }
 
     @Override
