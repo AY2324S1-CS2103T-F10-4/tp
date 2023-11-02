@@ -8,12 +8,19 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.interval.Duration;
+import seedu.address.model.interval.Interval;
+import seedu.address.model.interval.IntervalBegin;
+import seedu.address.model.interval.IntervalDay;
+import seedu.address.model.interval.IntervalEnd;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.testutil.PersonBuilder;
@@ -21,6 +28,16 @@ import seedu.address.testutil.PersonBuilder;
 public class UniquePersonListTest {
 
     private final UniquePersonList uniquePersonList = new UniquePersonList();
+
+    @Test void testFindInterval() throws ParseException {
+        Interval interval = new Interval(new IntervalDay("Mon"), new Duration("60"), new IntervalBegin("0600"),
+                new IntervalEnd("2200"));
+        uniquePersonList.add(ALICE);
+        List<String> result = uniquePersonList.findInterval(interval);
+        List<String> expected = new ArrayList<>();
+        expected.add("08:00 - 10:00");
+        assertEquals(expected, result);
+    }
 
     @Test
     public void contains_nullPerson_throwsNullPointerException() {

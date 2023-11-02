@@ -5,9 +5,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.interval.Interval;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -44,6 +46,18 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.stream()
                 .filter(person -> !person.isSamePerson(toCheck))
                 .anyMatch(toCheck::isSameDate);
+    }
+
+    /**
+     * Finds the list of timings which have the same day as the Interval from the address book
+     * @param interval
+     * @return list of timings
+     */
+    public List<String> findInterval(Interval interval) {
+        requireNonNull(interval);
+        return internalList.stream()
+                .filter(person -> person.getDay().toString().equals(interval.getIntervalDay().toString()))
+                .map(person -> person.getLesson().getTimeSlot()).collect(Collectors.toList());
     }
 
     /**

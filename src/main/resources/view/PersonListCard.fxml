@@ -10,11 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <padding>
+    <Insets top="10" right="10" bottom="10" left="10" />
+  </padding>
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
     </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0" styleClass="custom-vbox">
       <padding>
         <Insets top="5" right="5" bottom="5" left="15" />
       </padding>
@@ -32,12 +35,11 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <Label fx:id="subject" styleClass="cell_small_label" text="\$subject" />
-      <Label fx:id="day" styleClass="cell_small_label" text="\$day" />
-      <Label fx:id="begin" styleClass="cell_small_label" text="\$begin" />
-      <Label fx:id="end" styleClass="cell_small_label" text="\$end" />
-      <Label fx:id="lesson" styleClass="cell_small_label" text="\$lesson" />
       <Label fx:id="payRate" styleClass="cell_small_label" text="\$payrate" />
-      <Label fx:id="paid" styleClass="cell_small_label" text="\$paid" />
+      <Label fx:id="paid" styleClass="cell_small_label" text= "\$paid" />
+      <HBox spacing="5" alignment="CENTER_RIGHT">
+        <Label fx:id="lesson" text="\$lesson" styleClass="cell_small_label" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

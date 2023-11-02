@@ -25,7 +25,7 @@ public class PersonBuilder {
     public static final String DEFAULT_BEGIN = "1000";
     public static final String DEFAULT_END = "1200";
 
-    public static final String DEFAULT_PAYRATE = "15";
+    public static final String DEFAULT_PAYRATE = "15.00";
 
     private Name name;
     private Phone phone;

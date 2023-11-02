@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BEGIN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -21,6 +22,11 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.interval.Duration;
+import seedu.address.model.interval.Interval;
+import seedu.address.model.interval.IntervalBegin;
+import seedu.address.model.interval.IntervalDay;
+import seedu.address.model.interval.IntervalEnd;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -45,8 +51,8 @@ public class CommandTestUtil {
     public static final String VALID_BEGIN_BOB = "1300";
     public static final String VALID_END_AMY = "1400";
     public static final String VALID_END_BOB = "1500";
-    public static final String VALID_PAYRATE_AMY = "75";
-    public static final String VALID_PAYRATE_BOB = "25";
+    public static final String VALID_PAYRATE_AMY = "75.00";
+    public static final String VALID_PAYRATE_BOB = "25.00";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -95,6 +101,29 @@ public class CommandTestUtil {
                 .withBegin(VALID_BEGIN_BOB).withEnd(VALID_END_BOB)
                 .withPayRate(VALID_PAYRATE_BOB).build();
     }
+
+    public static final String VALID_INTERVAL_DAY = "Mon";
+    public static final String VALID_INTERVAL_DURATION = "60";
+    public static final String VALID_INTERVAL_BEGIN = "0800";
+    public static final String VALID_INTERVAL_END = "2200";
+
+    public static final String INVALID_INTERVAL_DAY = "Mond";
+    public static final String INVALID_INTERVAL_DURATION = "-60";
+    public static final String INVALID_INTERVAL_BEGIN = "8888";
+    public static final String INVALID_INTERVAL_END = "9999";
+
+    public static final Interval VALID_INTERVAL_ONE = new Interval(new IntervalDay("Mon"), new Duration("60"),
+            new IntervalBegin("0800"), new IntervalEnd("2200"));
+
+    public static final String INTERVAL_DAY_DESC_ONE = " " + PREFIX_DAY + VALID_INTERVAL_DAY;
+    public static final String INTERVAL_DURATION_DESC_ONE = " " + PREFIX_DURATION + VALID_INTERVAL_DURATION;
+    public static final String INTERVAL_BEGIN_DESC_ONE = " " + PREFIX_BEGIN + VALID_INTERVAL_BEGIN;
+    public static final String INTERVAL_END_DESC_ONE = " " + PREFIX_END + VALID_INTERVAL_END;
+
+    public static final String INVALID_INTERVAL_DAY_DESC_ONE = " " + PREFIX_DAY + INVALID_INTERVAL_DAY;
+    public static final String INVALID_INTERVAL_DURATION_DESC_ONE = " " + PREFIX_DURATION + INVALID_INTERVAL_DURATION;
+    public static final String INVALID_INTERVAL_BEGIN_DESC_ONE = " " + PREFIX_BEGIN + INVALID_INTERVAL_BEGIN;
+    public static final String INVALID_INTERVAL_END_DESC_ONE = " " + PREFIX_END + INVALID_INTERVAL_END;
 
     /**
      * Executes the given {@code command}, confirms that <br>

@@ -112,7 +112,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser, BEGIN_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BEGIN));
 
-        //multipleends
+        //multiple ends
         assertParseFailure(parser, END_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_END));
 

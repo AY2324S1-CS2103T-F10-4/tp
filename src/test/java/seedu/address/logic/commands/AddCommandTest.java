@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.interval.Interval;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -174,6 +176,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public List<String> findInterval(Interval interval) {
+            throw new AssertionError("This findInterval method should not be called");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -184,7 +191,42 @@ public class AddCommandTest {
         }
 
         @Override
+        public void markPersonUnPaid(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void getPersonPaid(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canUndoAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void purgeAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -200,6 +242,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Person> getScheduleList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Person> getUnfilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -259,6 +306,12 @@ public class AddCommandTest {
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
+
+        @Override
+        public void purgeAddressBook() {}
+
+        @Override
+        public void commitAddressBook() {}
     }
 
 }

@@ -10,16 +10,17 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class PayRate {
 
-    public static final String MESSAGE_CONSTRAINTS = "PayRate can take any values, as long as they are integers.";
+    public static final String MESSAGE_CONSTRAINTS = "PayRate can be either integers"
+            + "or decimals of up to 2 decimal places. It cannot be negative";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
-     * Only accepts positive integers.
+     * Only accepts positive numbers of up to 2 dp.
      */
-    public static final String VALIDATION_REGEX = "^\\d+$";
+    public static final String VALIDATION_REGEX = "^\\s*\\d+(\\.\\d{1,2})?\\s*$";
 
-    public final int value;
+    public final double value;
 
     /**
      * Constructs an {@code PayRate}.
@@ -29,7 +30,7 @@ public class PayRate {
     public PayRate(String payRate) {
         requireNonNull(payRate);
         checkArgument(isValidPayRate(payRate), MESSAGE_CONSTRAINTS);
-        value = Integer.parseInt(payRate);
+        value = Double.parseDouble(payRate);
         assert value >= 0; // payrate cannot be negative
     }
 
@@ -39,7 +40,7 @@ public class PayRate {
 
     @Override
     public String toString() {
-        return Integer.toString(value);
+        return String.format("%.2f", value);
     }
 
     @Override
@@ -59,8 +60,12 @@ public class PayRate {
 
     @Override
     public int hashCode() {
-        Integer payRate = (Integer) value;
+        Double payRate = value;
         return payRate.hashCode();
+    }
+
+    public double getValue() {
+        return value;
     }
 
 }

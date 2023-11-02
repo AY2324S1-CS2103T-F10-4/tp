@@ -158,6 +158,28 @@ Examples:
 
 Format: `list unpaid`
 
+
+### Finding Free Time : `freeTime`
+
+**Description**: Finds a list of free time in your schedule
+
+**Format**: `freeTime d/DAY dur/DURATION b/BEGIN end/END`
+
+**Expected Input**:
+* **Day (Compulsory field)**: String with restrictions in characters, non-case sensitive (Mon/Monday/Tue/Tuesday/Wed/Wednesday/Thu/Thursday/Fri/Friday/Sat/Saturday/Sun/Sunday).
+* **Duration (Compulsory field)**: Positive Integer to represent duration in minutes.
+* **Begin (Compulsory field)**: String with restrictions (HHMM).
+* **End (Compulsory field)**: String with restrictions (HHMM).
+
+**Expected Output when the command succeeds**: Free From: ...
+
+**Expected Output when the command fails**:
+
+* **Invalid Day**: Days should be written using their full names or their first three letters, and it should not be blank.
+* **Duration**: The duration must be a positive integer
+* **Invalid Begin**: Begin has a format of HHMM
+* **Invalid End**: End has a format of HHMM
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -182,3 +204,4 @@ To be added soon
 | **list**        | `list`                                                                                                                                                                                             |
 | **paid**        | `paid INDEX`<br> e.g., `paid 1`                                                                                                                                                                    |
 | **list unpaid** | `list unpaid`                                                                                                                                                                                      |
+| **freeTime**    | `d/DAY dur/DURATION b/BEGIN end/END`                                                                                                                                                               |

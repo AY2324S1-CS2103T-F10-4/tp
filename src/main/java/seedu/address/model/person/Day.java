@@ -76,24 +76,31 @@ public class Day {
         String result = "";
         switch (day) {
         case "mon":
+        case "monday":
             result = "Mon";
             break;
         case "tue":
+        case "tuesday":
             result = "Tue";
             break;
         case "wed":
+        case "wednesday":
             result = "Wed";
             break;
         case "thu":
+        case "thursday":
             result = "Thu";
             break;
         case "fri":
+        case "friday":
             result = "Fri";
             break;
         case "sat":
+        case "saturday":
             result = "Sat";
             break;
         case "sun":
+        case "sunday":
             result = "Sun";
             break;
         default:
@@ -108,7 +115,7 @@ public class Day {
 
     @Override
     public String toString() {
-        return value.toString();
+        return stringValue;
     }
 
     @Override

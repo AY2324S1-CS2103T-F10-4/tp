@@ -7,7 +7,7 @@ import seedu.address.logic.commands.IsPaidCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new IsPaidCommand object
  */
 public class IsPaidCommandParser implements Parser<IsPaidCommand> {
 

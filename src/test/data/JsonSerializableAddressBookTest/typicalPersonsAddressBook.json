@@ -11,7 +11,7 @@
     "end": "1000",
     "tags" : [ "friends" ],
     "paid": "false",
-    "payrate": "20"
+    "payrate": "20.00"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -23,7 +23,7 @@
     "end": "1100",
     "tags" : [ "owesMoney", "friends" ],
     "paid": "false",
-    "payrate": "15"
+    "payrate": "15.00"
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
@@ -35,7 +35,7 @@
     "end": "1200",
     "tags" : [ ],
     "paid": "false",
-    "payrate": "25"
+    "payrate": "25.00"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -47,7 +47,7 @@
     "end": "1300",
     "tags" : [ "friends" ],
     "paid": "false",
-    "payrate": "35"
+    "payrate": "35.00"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
@@ -59,7 +59,7 @@
     "end": "1400",
     "tags" : [ ],
     "paid": "false",
-    "payrate": "50"
+    "payrate": "50.00"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
@@ -71,7 +71,7 @@
     "end": "1500",
     "tags" : [ ],
     "paid": "false",
-    "payrate": "40"
+    "payrate": "40.00"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -80,9 +80,9 @@
     "subject" : "Chinese",
     "day": "Sun",
     "begin": "1400",
-    "end": "1600",
+    "end": "1620",
     "tags" : [ ],
     "paid": "false",
-    "payrate": "30"
+    "payrate": "30.00"
   } ]
 }

@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -37,18 +38,16 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private Label subject;
-    @FXML
-    private Label day;
+
     @FXML
     private Label lesson;
-    @FXML
-    private Label begin;
-    @FXML
-    private Label end;
     @FXML
     private Label paid;
     @FXML
     private Label payRate;
+
+    @FXML
+    private CheckBox paidCheckBox;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -62,11 +61,12 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         subject.setText(person.getSubject().value);
-        day.setText(person.getDay().value.toString());
-        begin.setText(person.getBegin().value);
-        end.setText(person.getEnd().value);
         lesson.setText(person.getLesson().toString());
         payRate.setText("rate: " + person.getPayRate().toString() + "/h");
-        paid.setText(String.valueOf(person.getPaid()));
+        if (person.getPaid()) {
+            paid.setText("paid");
+        } else {
+            paid.setText("not paid");
+        }
     }
 }

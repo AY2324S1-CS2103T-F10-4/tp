@@ -127,6 +127,10 @@ public class Person {
         this.paid = true;
     }
 
+    public void setUnPaid() {
+        this.paid = false;
+    }
+
     public PayRate getPayRate() {
         return payRate;
     }
@@ -214,5 +218,9 @@ public class Person {
                 .add("paid", paid)
                 .add("payrate", payRate)
                 .toString();
+    }
+
+    public double getMonthlyRevenue() {
+        return lesson.getMonthlyHours() * payRate.getValue();
     }
 }

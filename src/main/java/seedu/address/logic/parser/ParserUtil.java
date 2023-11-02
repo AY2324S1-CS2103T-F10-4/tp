@@ -5,6 +5,10 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.interval.Duration;
+import seedu.address.model.interval.IntervalBegin;
+import seedu.address.model.interval.IntervalDay;
+import seedu.address.model.interval.IntervalEnd;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Begin;
 import seedu.address.model.person.Day;
@@ -173,5 +177,70 @@ public class ParserUtil {
             throw new ParseException(PayRate.MESSAGE_CONSTRAINTS);
         }
         return new PayRate(trimmedPayRate);
+    }
+
+    /**
+     * Parses a {@code String day} into an {@code IntervalDay}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code day} is invalid.
+     */
+    public static IntervalDay parseIntervalDay(String day) throws ParseException {
+        requireNonNull(day);
+        String trimmedDay = day.trim();
+        IntervalDay initialisedDay;
+
+        try {
+            initialisedDay = new IntervalDay(trimmedDay);
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(IntervalDay.MESSAGE_CONSTRAINTS);
+        }
+
+        return initialisedDay;
+    }
+
+    /**
+     * Parses a {@code String begin} into an {@code IntervalBegin}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code begin} is invalid.
+     */
+    public static IntervalBegin parseIntervalBegin(String begin) throws ParseException {
+        requireNonNull(begin);
+        String trimmedBegin = begin.trim();
+        if (!IntervalBegin.isValidBegin(trimmedBegin)) {
+            throw new ParseException(IntervalBegin.MESSAGE_CONSTRAINTS);
+        }
+        return new IntervalBegin(trimmedBegin);
+    }
+
+    /**
+     * Parses a {@code String end} into an {@code IntervalEnd}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code end} is invalid.
+     */
+    public static IntervalEnd parseIntervalEnd(String end) throws ParseException {
+        requireNonNull(end);
+        String trimmedEnd = end.trim();
+        if (!IntervalEnd.isValidEnd(trimmedEnd)) {
+            throw new ParseException(IntervalEnd.MESSAGE_CONSTRAINTS);
+        }
+        return new IntervalEnd(trimmedEnd);
+    }
+
+    /**
+     * Parses a {@code String duration} into an {@code Duration}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code end} is invalid.
+     */
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        String trimmedDuration = duration.trim();
+        if (!Duration.isValidDuration(trimmedDuration)) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+        }
+        return new Duration(trimmedDuration);
     }
 }

@@ -8,6 +8,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,6 +18,11 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.interval.Duration;
+import seedu.address.model.interval.Interval;
+import seedu.address.model.interval.IntervalBegin;
+import seedu.address.model.interval.IntervalDay;
+import seedu.address.model.interval.IntervalEnd;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.PersonBuilder;
@@ -66,6 +72,17 @@ public class AddressBookTest {
     public void hasPerson_personInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
         assertTrue(addressBook.hasPerson(ALICE));
+    }
+
+    @Test
+    public void findInterval() {
+        addressBook.addPerson(ALICE);
+        Interval interval = new Interval(new IntervalDay("Mon"), new Duration("60"), new IntervalBegin("0600"),
+                new IntervalEnd("2200"));
+        List<String> result = addressBook.findInterval(interval);
+        List<String> expected = new ArrayList<>();
+        expected.add("08:00 - 10:00");
+        assertEquals(expected, result);
     }
 
     @Test

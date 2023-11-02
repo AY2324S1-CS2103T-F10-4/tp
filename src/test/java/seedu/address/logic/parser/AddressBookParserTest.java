@@ -24,6 +24,8 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.UnPaidAllCommand;
+import seedu.address.logic.commands.UnPaidCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -54,6 +56,13 @@ public class AddressBookParserTest {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_unpaid() throws Exception {
+        UnPaidCommand command = (UnPaidCommand) parser.parseCommand(
+                UnPaidCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new UnPaidCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
@@ -90,6 +99,12 @@ public class AddressBookParserTest {
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
+    }
+
+    @Test
+    public void parseCommand_unpaidAll() throws Exception {
+        assertTrue(parser.parseCommand(UnPaidAllCommand.COMMAND_WORD) instanceof UnPaidAllCommand);
+        assertTrue(parser.parseCommand(UnPaidAllCommand.COMMAND_WORD + " 3") instanceof UnPaidAllCommand);
     }
 
     @Test

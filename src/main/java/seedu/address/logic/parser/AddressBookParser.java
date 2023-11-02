@@ -15,10 +15,16 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FreeTimeCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IsPaidCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.PaidCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RevenueCommand;
+import seedu.address.logic.commands.UnPaidAllCommand;
+import seedu.address.logic.commands.UnPaidCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -85,10 +91,27 @@ public class AddressBookParser {
         case IsPaidCommand.COMMAND_WORD:
             return new IsPaidCommandParser().parse(arguments);
 
+        case UndoCommand.COMMAND_WORD:
+            return new UndoCommand();
+
+        case RedoCommand.COMMAND_WORD:
+            return new RedoCommand();
+
+        case RevenueCommand.COMMAND_WORD:
+            return new RevenueCommand();
+
+        case UnPaidCommand.COMMAND_WORD:
+            return new UnPaidCommandParser().parse(arguments);
+
+        case UnPaidAllCommand.COMMAND_WORD:
+            return new UnPaidAllCommand();
+
+        case FreeTimeCommand.COMMAND_WORD:
+            return new FreeTimeCommandParser().parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }

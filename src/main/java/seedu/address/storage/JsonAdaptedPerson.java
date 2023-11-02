@@ -67,7 +67,7 @@ class JsonAdaptedPerson {
         begin = source.getBegin().value;
         end = source.getEnd().value;
         paid = source.getPaid();
-        payRate = Integer.toString(source.getPayRate().value);
+        payRate = source.getPayRate().toString();
     }
 
     /**

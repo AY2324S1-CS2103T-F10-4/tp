@@ -1,10 +1,12 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.interval.Interval;
 import seedu.address.model.person.Person;
 
 /**
@@ -58,6 +60,7 @@ public interface Model {
     boolean hasPerson(Person person);
 
     boolean hasDate(Person person);
+    List<String> findInterval(Interval interval);
 
     /**
      * Deletes the given person.
@@ -66,6 +69,8 @@ public interface Model {
     void deletePerson(Person target);
 
     void markPersonPaid(Person target);
+
+    void markPersonUnPaid(Person target);
 
     void getPersonPaid(Person target);
 
@@ -89,16 +94,14 @@ public interface Model {
     /** Returns an unmodifiable view of the schedule list */
     ObservableList<Person> getScheduleList();
 
-    /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    /** Returns an unmodifiable view of the unfiltered person list */
+    ObservableList<Person> getUnfilteredPersonList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
+    void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
      * Saves the current addressbook {@code VersionedAddressBook} state in its history

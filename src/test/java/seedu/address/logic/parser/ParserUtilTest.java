@@ -11,6 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.PayRate;
 import seedu.address.model.person.Phone;
 
 public class ParserUtilTest {
@@ -19,11 +20,15 @@ public class ParserUtilTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
 
+    private static final String INVALID_NEGATIVE_PAYRATE = "-0";
+
+    private static final String INVALID_STRING_PAYRATE = "abcabc";
+
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
-
+    private static final String VALID_PAYRATE = "20.00";
     private static final String WHITESPACE = " \t\r\n";
 
     @Test
@@ -136,5 +141,33 @@ public class ParserUtilTest {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    }
+
+    @Test
+    public void parsePayRate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePayRate((String) null));
+    }
+
+    @Test
+    public void parsePayRate_invalidNegativeValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePayRate(INVALID_NEGATIVE_PAYRATE));
+    }
+
+    @Test
+    public void parsePayRate_invalidStringValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePayRate(INVALID_STRING_PAYRATE));
+    }
+
+    @Test
+    public void parsePayRate_validValueWithoutWhitespace_returnsPayRate() throws Exception {
+        PayRate expectedPayRate = new PayRate(VALID_PAYRATE);
+        assertEquals(expectedPayRate, ParserUtil.parsePayRate(VALID_PAYRATE));
+    }
+
+    @Test
+    public void parsePayRate_validValueWithWhitespace_returnsPayRate() throws Exception {
+        String payRateWithWhitespace = WHITESPACE + VALID_PAYRATE + WHITESPACE;
+        PayRate expectedPayRate = new PayRate(VALID_PAYRATE);
+        assertEquals(expectedPayRate, ParserUtil.parsePayRate(payRateWithWhitespace));
     }
 }

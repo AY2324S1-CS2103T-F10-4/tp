@@ -90,4 +90,5 @@ public class PersonTest {
                 + ", payrate=" + ALICE.getPayRate() + "}";
         assertEquals(expected, ALICE.toString());
     }
+
 }

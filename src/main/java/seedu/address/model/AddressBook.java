@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.interval.Interval;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -78,15 +79,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Finds the list of timings which have the same day as the Interval from the address book
+     * @param interval
+     * @return list of timings
+     */
+    public List<String> findInterval(Interval interval) {
+        requireNonNull(interval);
+        return persons.findInterval(interval);
+    }
+
+    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
         persons.add(p);
-    }
-
-    public void markPersonPaid(Person p) {
-        p.setPaid();
     }
 
     /**
